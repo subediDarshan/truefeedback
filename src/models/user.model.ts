@@ -3,7 +3,6 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface Message extends Document {
   content: string;
   createdAt: Date;
-  updatedAt: Date;
 }
 
 const messageSchema: Schema<Message> = new Schema(
@@ -12,8 +11,12 @@ const messageSchema: Schema<Message> = new Schema(
       type: String,
       required: true,
     },
+    createdAt: {
+      type: Date,
+      required: true,
+      default: Date.now
+    }
   },
-  { timestamps: true }
 );
 
 export interface User extends Document {
