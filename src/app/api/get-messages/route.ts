@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import mongoose from "mongoose";
 import UserModel from "@/models/user.model";
-import { array } from "zod";
 
 export async function GET(req: NextRequest) {
   try {
