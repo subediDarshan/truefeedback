@@ -15,6 +15,7 @@ import { User } from "next-auth";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import {motion} from "framer-motion"
 
 function UserDashboard() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -134,6 +135,12 @@ function UserDashboard() {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.3 }}
+    >
     <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
@@ -191,6 +198,7 @@ function UserDashboard() {
         )}
       </div>
     </div>
+    </motion.div>
   );
 }
 

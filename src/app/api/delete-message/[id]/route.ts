@@ -5,18 +5,13 @@ import { User } from "next-auth";
 import { Message } from "@/models/user.model";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/options";
-import mongoose, { isValidObjectId, ObjectId, Types } from "mongoose";
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string | Types.ObjectId } }
+  params: Promise<{ id: string }>
 ) {
   await dbConnect();
-  let messageId = params.id;
-  if(!isValidObjectId(messageId)) {
-    if(typeof messageId == "string")
-      messageId = mongoose.Types.ObjectId.createFromHexString(messageId)
-  }
+  const { id } = await params;
 
   const session = await getServerSession(authOptions);
   const _user: User = session?.user;
@@ -30,7 +25,7 @@ export async function DELETE(
   try {
     const updateResult = await UserModel.updateOne(
       { _id: _user._id },
-      { $pull: { messages: { _id: messageId } } }
+      { $pull: { messages: { _id: id } } }
     );
 
     if (updateResult.modifiedCount === 0) {

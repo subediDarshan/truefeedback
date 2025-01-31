@@ -15,6 +15,7 @@ import { Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {motion} from "framer-motion"
 
 
 
@@ -92,6 +93,12 @@ const SignupPage = () => {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.3 }}
+    >
     <div className="flex justify-center items-center min-h-screen bg-gray-800">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
@@ -177,6 +184,7 @@ const SignupPage = () => {
         </div>
       </div>
     </div>
+    </motion.div>
   );
 }
 

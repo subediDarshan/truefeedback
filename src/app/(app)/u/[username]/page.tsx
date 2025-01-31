@@ -23,6 +23,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { messageSchema } from '@/schemas/message.schema';
 import { useToast } from '@/hooks/use-toast';
+import {motion} from "framer-motion"
 
 
 export default function SendMessage() {
@@ -94,6 +95,12 @@ export default function SendMessage() {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.3 }}
+    >
     <div className="container mx-auto my-8 p-6 bg-white rounded max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center">
         Public Profile Link
@@ -176,6 +183,7 @@ export default function SendMessage() {
         </Link>
       </div>
     </div>
+    </motion.div>
   );
 }
 
