@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/options";
 
 export async function DELETE(
-  params: Promise<{ id: string }>
+  {params}: {params: Promise<{ id: string }>}
 ) {
   await dbConnect();
   const { id } = await params;
