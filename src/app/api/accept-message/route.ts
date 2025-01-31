@@ -47,18 +47,20 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Error changing accepting status",
-      },
-      { status: 500 }
-    );
+  } catch (error:unknown) {
+    if(error instanceof Error) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: error.message,
+        },
+        { status: 500 }
+      );
+    }
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
 
@@ -94,7 +96,7 @@ export async function GET(req: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

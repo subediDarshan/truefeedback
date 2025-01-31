@@ -80,7 +80,7 @@ const SignupPage = () => {
       const axiosError = error as AxiosError<ApiResponse>;
 
       // Default error message
-      let errorMessage = axiosError.response?.data.message;
+      const errorMessage = axiosError.response?.data.message;
 
       toast({
         title: "Sign Up Failed",

@@ -8,7 +8,7 @@ export async function sendVerificationEmail(
   otp: string
 ): Promise<ApiResponse> {
   try {
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
       to: email,
       subject: "True Feedback Verification Code",

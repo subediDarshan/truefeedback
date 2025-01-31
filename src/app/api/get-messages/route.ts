@@ -1,11 +1,11 @@
 import dbConnect from "@/lib/dbConnect";
 import { getServerSession } from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import mongoose from "mongoose";
 import UserModel from "@/models/user.model";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
 
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

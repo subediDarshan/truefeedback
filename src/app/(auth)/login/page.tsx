@@ -60,12 +60,14 @@ const LoginPage = () => {
       if (SignInResponse?.url) {
         router.replace("/dashboard");
       }
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if(error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }

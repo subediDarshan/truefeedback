@@ -1,10 +1,10 @@
 import dbConnect from "@/lib/dbConnect";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateObject } from "ai";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   try {
     await dbConnect();
 
