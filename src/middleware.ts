@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
   
-  console.log("check", );
+ 
   
   
   if (!token && url.pathname.startsWith('/dashboard')) {

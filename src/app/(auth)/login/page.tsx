@@ -55,7 +55,7 @@ const LoginPage = () => {
         }
       }
 
-      console.log(SignInResponse);
+     
 
       if (SignInResponse?.url) {
         router.replace("/dashboard");

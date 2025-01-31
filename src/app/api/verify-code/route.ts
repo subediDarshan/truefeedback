@@ -8,7 +8,6 @@ export async function POST(req: NextRequest) {
 
     const result = await req.json();
 
-    console.log("result: ", result);
 
     const username = result.username;
     const code = result.code;
@@ -54,8 +53,7 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-  } catch (error) {
-    console.error("Error verifying user:", error);
+  } catch {
     return NextResponse.json(
       { success: false, message: "Error verifying user" },
       { status: 500 }

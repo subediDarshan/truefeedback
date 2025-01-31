@@ -84,8 +84,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
-    console.error("Error registering user:", error);
+  } catch {
     return NextResponse.json(
       {
         success: false,

@@ -40,10 +40,20 @@ export async function GET() {
         },
       },
     ]);
-    if (!user || !Array.isArray(user) || user.length <= 0) {
+    
+    
+    if (!user || !Array.isArray(user)) {
       throw new Error();
     }
-
+    if(user.length == 0) {
+      return NextResponse.json(
+        {
+          success: true,
+          messages: [],
+        },
+        { status: 200 }
+      );
+    }
     return NextResponse.json(
       {
         success: true,
