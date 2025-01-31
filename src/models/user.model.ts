@@ -58,7 +58,8 @@ const userSchema: Schema<User> = new Schema(
     },
     isVerified: {
       type: Boolean,
-      default: false,
+      // default: false, RESEND_DISABLED
+      default: true,
     },
     isAcceptingMessages: {
       type: Boolean,

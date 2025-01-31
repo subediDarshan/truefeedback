@@ -25,7 +25,7 @@ export async function POST() {
     }
 
     const prompt =
-      'Create an object having field messages which is an array of three open-ended and engaging questions. These questions are for an anonymous social messaging platform, like Qooh.me. For example, your output should be structured like this: {"messages": ["If you could have dinner with any historical figure, who would it be?", "What’s a simple thing that makes you happy?"]}';
+      'Create an object having field messages which is an array of three general feedbacks given by consumer to business. These questions are for an anonymous feedback messaging platform. For example, your output should be structured like this: {"messages": ["Work on email services", "Great UI. Absolutely loved it!", "Loved the anonymous feature"]}';
 
     const { object } = await generateObject({
       model: google("gemini-1.5-pro-latest"),

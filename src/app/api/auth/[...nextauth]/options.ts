@@ -32,9 +32,9 @@ export const authOptions: NextAuthOptions = {
           if (!user) {
             throw new Error("No user found with this email/username");
           }
-          if (!user.isVerified) {
-            throw new Error("Firstly verify your email before login");
-          }
+          // if (!user.isVerified) {
+          //   throw new Error("Firstly verify your email before login");
+          // } RESEND_DISABLED
 
           const isPasswordCorrect = await bcryptjs.compare(
             credentials.password,

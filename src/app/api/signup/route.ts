@@ -55,32 +55,33 @@ export async function POST(request: NextRequest) {
         password: hashedPassword,
         verifyCode,
         verifyCodeExpiry: expiryDate,
-        isVerified: false,
+        // isVerified: false, RESEND_DISABLED
+        isVerified: true,
         isAcceptingMessages: true,
         messages: [],
       });
     }
 
     // Send verification email
-    const emailResponse = await sendVerificationEmail(
-      email,
-      username,
-      verifyCode
-    );
-    if (!emailResponse.success) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: emailResponse.message,
-        },
-        { status: 500 }
-      );
-    }
+    // const emailResponse = await sendVerificationEmail(
+    //   email,
+    //   username,
+    //   verifyCode
+    // );
+    // if (!emailResponse.success) {
+    //   return NextResponse.json(
+    //     {
+    //       success: false,
+    //       message: emailResponse.message,
+    //     },
+    //     { status: 500 }
+    //   );
+    // } RESEND_DISABLED
 
     return NextResponse.json(
       {
         success: true,
-        message: "User registered successfully. Please verify your account.",
+        message: "User registered successfully.",
       },
       { status: 201 }
     );

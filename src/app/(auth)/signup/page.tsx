@@ -71,7 +71,8 @@ const SignupPage = () => {
         description: response.data.message,
       });
 
-      router.replace(`/verify/${username}`);
+      // router.replace(`/verify/${username}`); RESEND_DISABLED
+      router.replace(`/login`);
 
       setIsSubmitting(false);
     } catch (error) {

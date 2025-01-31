@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
       {
         success: true,
         user,
+        message: acceptMessage ? "Accepting messages" : "Not accepting messages",
       },
       { status: 201 }
     );

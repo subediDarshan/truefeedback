@@ -15,7 +15,7 @@ import ApiResponse from '@/types/ApiResponse';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { AxiosError } from 'axios';
 import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+// import { useState } from 'react'; RESEND_DISABLED
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import {motion} from "framer-motion"
@@ -31,11 +31,11 @@ export default function VerifyAccount() {
         code: ""
     }
   });
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [isSubmitting, setIsSubmitting] = useState(false) RESEND_DISABLED
 
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
     try {
-        setIsSubmitting(true)
+        // setIsSubmitting(true) RESEND_DISABLED
       const response = await axios.post<ApiResponse>(`/api/verify-code`, {
         username: params.username,
         code: data.code,
@@ -58,7 +58,7 @@ export default function VerifyAccount() {
       });
     }
     finally {
-        setIsSubmitting(false)
+        // setIsSubmitting(false) RESEND_DISABLED
     }
   };
 
@@ -85,13 +85,14 @@ export default function VerifyAccount() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Verification Code</FormLabel>
-                  <Input {...field} disabled={isSubmitting}/>
+                  {/* <Input {...field} disabled={isSubmitting}/>RESEND_DISABLED */}
+                  <Input {...field} disabled={true}/>
                   <FormMessage />
                 </FormItem>
               )}
             />
             
-            <Button type="submit">Verify</Button>
+            <Button type="submit" disabled={true}>Verify</Button>
           </form>
         </Form>
       </div>
